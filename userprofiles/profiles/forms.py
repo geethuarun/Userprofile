@@ -20,7 +20,7 @@ class LoginForm(forms.Form):
     password=forms.CharField(widget=forms.PasswordInput(attrs={"class":"form-control"}))
 
 
-class StudentCreateForm(forms.ModelForm):
+class UserCreateForm(forms.ModelForm):
     class Meta:
         model=Users
         fields="__all__"
@@ -31,3 +31,12 @@ class StudentCreateForm(forms.ModelForm):
             "phone":forms.TextInput(attrs={"class":"form-control"}),
             "address":forms.Textarea(attrs={"class":"form-control","rows":3}),
             "gender":forms.Select(attrs={"class":"form-select"})}
+        
+class UserChangeForm(forms.ModelForm):
+    class Meta:
+        model=Users
+        fields=["email","phone"]
+
+        widgets={
+            "email":forms.EmailInput(attrs={"class":"form-control"}),
+            "phone":forms.TextInput(attrs={"class":"form-control"})}
